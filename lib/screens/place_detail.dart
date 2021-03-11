@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:great_places/models/place.dart';
-import 'package:great_places/screens/map.dart' as SCREEN;
+import 'package:great_places/screens/map.dart' as MapScreen;
 
 class PlaceDetail extends StatelessWidget {
   @override
@@ -39,7 +39,7 @@ class PlaceDetail extends StatelessWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   fullscreenDialog: true,
-                  builder: (ctx) => SCREEN.Map(
+                  builder: (ctx) => MapScreen.Map(
                     isReadOnly: true,
                     initialLocation: place.location,
                   ),
