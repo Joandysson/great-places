@@ -22,6 +22,15 @@ class PlaceDetail extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10),
+          Text(
+            place.location.address,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.grey,
+            ),
+          ),
+          SizedBox(height: 10),
           FlatButton.icon(
             icon: Icon(Icons.map),
             label: Text('Ver no Mapa'),
