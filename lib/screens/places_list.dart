@@ -29,26 +29,26 @@ class PlacesList extends StatelessWidget {
                 child: Center(
                   child: Text('Nenhum local cadastrado'),
                 ),
-                builder: (ctx, greatPlaces, child) => greatPlaces.itemsCount ==
-                        0
-                    ? child
-                    : ListView.builder(
-                        itemCount: greatPlaces.itemsCount,
-                        itemBuilder: (BuildContext ctx, int i) => ListTile(
-                          leading: CircleAvatar(
-                            backgroundImage:
-                                FileImage(greatPlaces.itemByIndex(i).image),
+                builder: (ctx, greatPlaces, child) =>
+                    greatPlaces.itemsCount == 0
+                        ? child
+                        : ListView.builder(
+                            itemCount: greatPlaces.itemsCount,
+                            itemBuilder: (BuildContext ctx, int i) => ListTile(
+                              leading: CircleAvatar(
+                                backgroundImage:
+                                    FileImage(greatPlaces.itemByIndex(i).image),
+                              ),
+                              title: Text(greatPlaces.itemByIndex(i).title),
+                              // subtitle:
+                              //     Text(greatPlaces.itemByIndex(i).location.address),
+                              onTap: () {
+                                Navigator.of(context).pushNamed(
+                                    AppRoutes.PLACE_DETAIL,
+                                    arguments: greatPlaces.itemByIndex(i));
+                              },
+                            ),
                           ),
-                          title: Text(greatPlaces.itemByIndex(i).title),
-                          subtitle:
-                              Text(greatPlaces.itemByIndex(i).location.address),
-                          onTap: () {
-                            Navigator.of(context).pushNamed(
-                                AppRoutes.PLACE_DETAIL,
-                                arguments: greatPlaces.itemByIndex(i));
-                          },
-                        ),
-                      ),
               ),
       ),
     );

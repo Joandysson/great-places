@@ -21,6 +21,6 @@ class GoogleLocation {
     );
 
     final response = await http.get(url);
-    return json.decode(response.body)['results'][0]['formated_address'];
+    return json.decode(response.body)['results'][0]['formatted_address'];
   }
 }

@@ -32,7 +32,7 @@ class _PlaceFormState extends State<PlaceForm> {
   bool _isValidForm() {
     return _titleController.text.isNotEmpty &&
         _pickedImage != null &&
-        _pickedImage != null;
+        _pickedPosition != null;
   }
 
   void _submitForm() {
@@ -54,6 +54,7 @@ class _PlaceFormState extends State<PlaceForm> {
         title: Text('Novo Lugar'),
       ),
       body: Column(
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
@@ -74,7 +75,7 @@ class _PlaceFormState extends State<PlaceForm> {
                     SizedBox(height: 10),
                     ImageInput(this._selectImage),
                     SizedBox(height: 10),
-                    LocationInput(this._selectPosition)
+                    LocationInput(this._selectPosition),
                   ],
                 ),
               ),

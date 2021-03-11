@@ -25,6 +25,6 @@ class DB {
 
   static Future<List<Map<String, dynamic>>> getData(String table) async {
     final db = await DB.database();
-    return await db.query(table);
+    return db.query(table);
   }
 }

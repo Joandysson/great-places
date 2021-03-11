@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:great_places/utils/googleLocation.dart';
 import 'package:location/location.dart';
-import 'package:great_places/screens/map.dart' as SCREEN;
+import 'package:great_places/screens/map.dart' as MapScreen;
 
 class LocationInput extends StatefulWidget {
   final Function onSelectPosition;
@@ -30,11 +30,12 @@ class _LocationInputState extends State<LocationInput> {
   Future<void> _getCurrentUserLocation() async {
     try {
       final locData = await Location().getLocation();
+
       _showPreview(locData.latitude, locData.longitude);
-      widget.onSelectPosition(
+      widget.onSelectPosition(LatLng(
         locData.latitude,
         locData.longitude,
-      );
+      ));
     } catch (e) {
       return;
     }
@@ -44,13 +45,13 @@ class _LocationInputState extends State<LocationInput> {
     final LatLng selectedPosition = await Navigator.of(context).push(
       MaterialPageRoute(
         fullscreenDialog: true,
-        builder: (ctx) => SCREEN.Map(),
+        builder: (ctx) => MapScreen.Map(),
       ),
     );
+
     if (selectedPosition == null) return;
 
     _showPreview(selectedPosition.latitude, selectedPosition.longitude);
-
     widget.onSelectPosition(selectedPosition);
   }
 
@@ -66,7 +67,7 @@ class _LocationInputState extends State<LocationInput> {
             border: Border.all(width: 1, color: Colors.grey),
           ),
           child: _previewImageUrl == null
-              ? Text('Localização não informada')
+              ? Text('Localização não informada!')
               : Image.network(
                   _previewImageUrl,
                   fit: BoxFit.cover,
