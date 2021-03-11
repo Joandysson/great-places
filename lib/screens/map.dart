@@ -51,12 +51,13 @@ class _MapState extends State<Map> {
           zoom: 13,
         ),
         onTap: widget.isReadOnly ? null : _selectPosition,
-        markers: _pickerPosition == null
+        markers: (_pickerPosition == null && !widget.isReadOnly)
             ? const {}
             : {
                 Marker(
                   markerId: MarkerId('p1'),
-                  position: _pickerPosition,
+                  position:
+                      _pickerPosition ?? widget.initialLocation.toLatLng(),
                 ),
               },
       ),
